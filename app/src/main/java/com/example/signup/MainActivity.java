@@ -2,8 +2,8 @@ package com.example.signup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.PixelCopy;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +15,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.internal.EdgeToEdgeUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,40 +27,58 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EditText txt_username = findViewById(R.id.txt_username);
-        EditText txt_password = findViewById(R.id.txt_password);
+        EditText txt_uname = findViewById(R.id.txt_uname);
+        EditText txt_pword = findViewById(R.id.txt_pword);
         EditText txt_email = findViewById(R.id.txt_email);
         Button btn_save = findViewById(R.id.btn_save);
 
+        Button btn_toUpdate = findViewById(R.id.btn_toUpdate);
+        btn_toUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openUpdate();
+            }
+        });
+
+        Button btn_delete = findViewById(R.id.btn_delete);
+        btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDelete();
+            }
+        });
+
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                String username = txt_username.getText().toString();
-                String password = txt_password.getText().toString();
+            public void onClick(View view) {
+                String uname = txt_uname.getText().toString();
+                String pword = txt_pword.getText().toString();
                 String email = txt_email.getText().toString();
 
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                String url = "https://192.168.1.71/android_crud/create.php";
+                String url ="http://192.168.1.71/android_crud/create.php";
+                //local ip/folder name from htdocs/php create file
 
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        if (response.equals("Success")) {
-                            Toast.makeText(MainActivity.this,"Data added", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(MainActivity.this, "Data Failed to Add to Database", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }, new Response.ErrorListener() {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                if (response.equals("Success")){
+                                    Toast.makeText(MainActivity.this, "Data Added", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(MainActivity.this, "Data Failed to Add to Database", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainActivity.this,error.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
                     }
-                }) {
+                }){
                     protected Map<String, String> getParams(){
                         Map<String, String> paramV = new HashMap<>();
-                        paramV.put("username", username);
-                        paramV.put("password", password);
+                        paramV.put("uname", uname);
+                        paramV.put("pword", pword);
                         paramV.put("email", email);
                         return paramV;
                     }
@@ -67,5 +86,14 @@ public class MainActivity extends AppCompatActivity {
                 queue.add(stringRequest);
             }
         });
+    }
+
+    public void openUpdate(){
+        Intent intent = new Intent(this, Update.class);
+        startActivity(intent);
+    }
+    public void openDelete(){
+        Intent intent = new Intent(this, Delete.class);
+        startActivity(intent);
     }
 }

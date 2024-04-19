@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Update"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <EditText
+        android:id="@+id/txt_id"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:ems="10"
+        android:hint="ID"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/txt_uname"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/txt_pword"
+        android:hint="Password"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:ems="10"
+        android:inputType="textPersonName"/>
+
+    <EditText
+        android:id="@+id/txt_email"
+        android:hint="Email"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:ems="10"
+        android:inputType="textPersonName"/>
+
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="UPDATE"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/btn_next2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="NEXT"
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>

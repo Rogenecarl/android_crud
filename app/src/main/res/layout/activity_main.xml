@@ -1,46 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/txt_username"
-        android:hint="Username"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:ems="10"
-        android:inputType="textPersonName"/>
-
-    <EditText
-        android:id="@+id/txt_password"
-        android:hint="Password"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:ems="10"
-        android:inputType="textPersonName"/>
-
-    <EditText
-        android:id="@+id/txt_email"
-        android:hint="Email"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:ems="10"
-        android:inputType="textPersonName"/>
-
-    <Button
-        android:id="@+id/btn_save"
-        android:layout_width="300dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save to Database"
-        android:layout_marginTop="20dp">
+        android:orientation="vertical"
+        android:padding="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    </Button>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/txt_uname"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:hint="Username"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/txt_pword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:hint="Password"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/txt_email"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:text="Save to Database" />
+            <Button
+                android:id="@+id/btn_toUpdate"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:text="Update to Database" />
+            <Button
+                android:id="@+id/btn_delete"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:text="Delete from Database" />
+            <Button
+                android:id="@+id/btn_Bretrieve"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:text="Retrieve from Database" />
+
+        </LinearLayout>
 
 
 
-</LinearLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
